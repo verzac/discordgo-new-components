@@ -710,7 +710,14 @@ type RadioGroupOption struct {
 	Label       string `json:"label"`
 	Value       string `json:"value"`
 	Description string `json:"description,omitempty"`
-	Default     bool   `json:"default,omitempty"`
+	Default     *bool  `json:"default,omitempty"`
+}
+
+type CheckboxGroupOption struct {
+	Label       string `json:"label"`
+	Value       string `json:"value"`
+	Description string `json:"description,omitempty"`
+	Default     *bool  `json:"default,omitempty"`
 }
 
 // CheckboxGroup is an interactive component for selecting one or many options via checkboxes.
@@ -719,10 +726,10 @@ type CheckboxGroup struct {
 	// Unique identifier for the component; auto populated through increment if not provided.
 	ID        int                `json:"id,omitempty"`
 	CustomID  string             `json:"custom_id,omitempty"`
-	Options   []RadioGroupOption `json:"options"`
-	MinValues *int               `json:"min_values,omitempty"`
-	MaxValues int                `json:"max_values,omitempty"`
-	Required  *bool              `json:"required,omitempty"`
+	Options   []CheckboxGroupOption `json:"options"`
+	MinValues *int                  `json:"min_values,omitempty"`
+	MaxValues int                   `json:"max_values,omitempty"`
+	Required  *bool                 `json:"required,omitempty"`
 
 	// List of values that is only populated when receiving an interaction response; do not fill this manually.
 	Values []string `json:"values,omitempty"`
@@ -752,7 +759,7 @@ type Checkbox struct {
 	// Unique identifier for the component; auto populated through increment if not provided.
 	ID       int    `json:"id,omitempty"`
 	CustomID string `json:"custom_id,omitempty"`
-	Default  bool   `json:"default,omitempty"`
+	Default  *bool  `json:"default,omitempty"`
 	Value    bool   `json:"value,omitempty"`
 }
 
